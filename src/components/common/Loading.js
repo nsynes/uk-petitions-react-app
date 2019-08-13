@@ -4,7 +4,6 @@ import './Loading.css';
 
 const Loading = (props) => {
     const { width, height } = props;
-    console.log('loading component')
 
     return <div className="loading" style={{ width, height }} />;
 }

@@ -1,13 +1,9 @@
 import React from 'react'
 import '../leafletMap/LeafletMap.css';
-import { Map as LeafletMap, TileLayer, Popup, GeoJSON } from 'react-leaflet';
+import { Map as LeafletMap, TileLayer, GeoJSON } from 'react-leaflet';
 import ukRegions from '../../data/UK-region-polygon/uk-region.json';
 
 class Map extends React.Component {
-
-    constructor(props) {
-        super(props)
-    }
 
     getColor = (feature) => {
         return (

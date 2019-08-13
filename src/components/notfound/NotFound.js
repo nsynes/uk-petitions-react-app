@@ -4,9 +4,9 @@ import './NotFound.css';
 
 const NotFound = () => {
     return (
-        <div className="NotFound">
-            <h1 className="NotFound-title">Oops! Page not found</h1>
-            <Link to="/" className="NotFound-link">Go to homepage</Link>
+        <div className="notfound">
+            <h1 className="notfound-title">Oops! Page not found</h1>
+            <Link to="/" className="notfound-link">Go to homepage</Link>
         </div>
     );
 }

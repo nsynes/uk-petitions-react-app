@@ -62,11 +62,11 @@ class Search extends React.Component {
 
         if (searchResults.length > 0) {
             return (
-                <div className="Search-result-container">
+                <div className="search-result-container">
                     {searchResults.map(result => (
                         <div
                             key={result.id}
-                            className="Search-result"
+                            className="search-result"
                             onClick={() => this.handleRedirect(result.id)}
                         >
                             {result.attributes.action}
@@ -78,8 +78,8 @@ class Search extends React.Component {
 
         if (!loading) {
             return (
-                <div className="Search-result-container">
-                    <div className="Search-no-result">
+                <div className="search-result-container">
+                    <div className="search-no-result">
                         No results found.
                     </div>
                 </div>
@@ -91,10 +91,10 @@ class Search extends React.Component {
         const { loading, searchQuery } = this.state;
 
         return (
-            <div className="Search">
-                <span className="Search-icon" />
+            <div className="search">
+                <span className="search-icon" />
                 <input
-                    className="Search-input"
+                    className="search-input"
                     type="text"
                     placeholder="keywords"
                     onChange={this.handleChange}
@@ -102,7 +102,7 @@ class Search extends React.Component {
                 />
 
                 {loading &&
-                <div className="Search-loading">
+                <div className="search-loading">
                     <Loading
                         width='12px'
                         height='12px'

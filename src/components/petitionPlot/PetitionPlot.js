@@ -1,6 +1,5 @@
 import React from 'react';
 import Plot from 'react-plotly.js';
-import '../petitionPlot/PetitionPlot.css';
 
 class PetitionPlot extends React.Component {
     constructor(props) {
@@ -20,7 +19,6 @@ class PetitionPlot extends React.Component {
             }
         }
 
-
         return(
             <div>
                 <Plot
@@ -34,21 +32,29 @@ class PetitionPlot extends React.Component {
                     },
                     orientation: 'v'
                     }]}
+                    useResizeHandler
                     layout={ {
-                        width: xData.length*120,
-                        height: 450,
                         margin: {
                             l: 30,
                             r: 30,
-                            b: 30,
+                            b: 80,
                             t: 0,
                             pad: 0
                         },
                         paper_bgcolor: 'rgba(0,0,0,0)',
                         plot_bgcolor: 'rgba(0,0,0,0)',
-                        title: ''
+                        title: '',
+                        yaxis: {
+                            fixedrange: true
+                        },
+                        xaxis : {
+                            fixedrange: true
+                        },
+                        autosize: true
                     } }
-                    config={ {displayModeBar: false, responsive: true} }/>
+                    style={{ width: '100%' }}
+                    config={ {displayModeBar: false} }
+                    />
                 <br />
             </div>
         )

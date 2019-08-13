@@ -5,20 +5,20 @@ import './Pagination.css';
 const Pagination = (props) => {
     const { page, totalPages, handlePaginationClick } = props;
     return (
-        <div className="Pagination">
+        <div className="pagination">
             <button
-                className="Pagination-button"
+                className="pagination-button"
                 onClick={() => handlePaginationClick('prev')}
                 disabled={page <= 0}>
                 &larr;
             </button>
 
-            <span className="Pagination-info">
+            <span className="pagination-info">
                 page <b>{page}</b> of <b>{totalPages}</b>
             </span>
 
             <button
-                className="Pagination-button"
+                className="pagination-button"
                 onClick={() => handlePaginationClick('next')}
                 disabled={page >= totalPages}>
                 &rarr;

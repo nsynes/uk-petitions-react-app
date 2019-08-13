@@ -8,9 +8,9 @@ const Table = (props) => {
     const { petitions, renderDate, history } = props;
 
     return (
-        <div className="Table-container">
-                <table className="Table">
-                    <thead className="Table-head">
+        <div className="table-container">
+                <table className="table">
+                    <thead className="table-head">
                         <tr>
                             <th>Petition</th>
                             <th>Status</th>
@@ -19,26 +19,26 @@ const Table = (props) => {
                             <th>ID</th>
                         </tr>
                     </thead>
-                    <tbody className="Table-body">
+                    <tbody className="table-body">
                         {petitions.map((petition) => (
                             <tr
                                 key={petition.id}
                                 onClick={() => history.push('/petition/' + petition.id)}>
                                 <td>
-                                    <span className="Table-petition-name"></span>
+                                    <span className="table-petition-name"></span>
                                     {petition.attributes.action}
                                 </td>
                                 <td>
                                     {renderStatus(petition.attributes.state)}
                                 </td>
                                 <td>
-                                    <span className="Table-details">{petition.attributes.signature_count.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}</span>
+                                    <span className="table-details">{petition.attributes.signature_count.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}</span>
                                 </td>
                                 <td>
-                                    <span className="Table-details">{renderDate(petition.attributes.created_at)}</span>
+                                    <span className="table-details">{renderDate(petition.attributes.created_at)}</span>
                                 </td>
                                 <td>
-                                    <span className="Table-details">{petition.id}</span>
+                                    <span className="table-details">{petition.id}</span>
                                 </td>
                             </tr>
                         ))}

@@ -1,8 +1,8 @@
-.Table-container {
+.table-container {
   overflow-x: auto; /* Needed for table to be responsive */
 }
 
-.Table {
+.table {
   min-width: 800px;
   width: 80%;
   margin-left: auto;
@@ -11,11 +11,11 @@
   border-spacing: 0;
 }
 
-.Table-head {
+.table-head {
   background-color: #ffffff;
 }
 
-.Table-head tr th {
+.table-head tr th {
   padding: 8px 20px;
   color: #333333;
   border-bottom: 2px solid #0c2033;
@@ -25,28 +25,28 @@
   font-weight: bold;
 }
 
-.Table-body {
+.table-body {
   text-align: left;
   background-color: #f1f1f1 ;
 }
 
-.Table-body tr td {
+.table-body tr td {
   padding: 8px 20px;
   border-bottom: 1px solid #999999;
   color: #333333;
   cursor: pointer;
 }
 
-.Table-body tr:hover {
+.table-body tr:hover {
   background-color: #ffffff;
 }
 
-.Table-petition-name {
+.table-petition-name {
   color: #000000;
   font-size: 12px;
 }
 
-.Table-details {
+.table-details {
   white-space: nowrap;
   overflow: hidden;
   color: #333333;

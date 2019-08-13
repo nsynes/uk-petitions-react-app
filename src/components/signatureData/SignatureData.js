@@ -29,33 +29,35 @@ class SignatureData extends React.Component {
         const group = 'CTRY18NM'
 
         // merge country, region and county data to the constituency signature count data
-        constituencySignatureCount.map(
-            result => (result.location = (
-                ({ CTRY18NM, GOR10NM, UTLA17NM }) => ({ CTRY18NM, GOR10NM, UTLA17NM }))(constituencyLookup.find(
-                    function(element) { return element.PCON17CD === result.ons_code })
+        if (constituencySignatureCount ) {
+            constituencySignatureCount.map(
+                result => (result.location = (
+                    ({ CTRY18NM, GOR10NM, UTLA17NM }) => ({ CTRY18NM, GOR10NM, UTLA17NM }))(constituencyLookup.find(
+                        function(element) { return element.PCON17CD === result.ons_code })
+                    )
                 )
             )
-        )
 
-        // sort the signature data by the grouping location variable (country, region, county, or constituency)
-        constituencySignatureCount.sort((a,b) => (a.location[group] > b.location[group]) ? 1 : ((b.location[group] > a.location[group]) ? -1 : 0));
+            // sort the signature data by the grouping location variable (country, region, county, or constituency)
+            constituencySignatureCount.sort((a,b) => (a.location[group] > b.location[group]) ? 1 : ((b.location[group] > a.location[group]) ? -1 : 0));
 
-        var groupSum = {};
-        constituencySignatureCount.forEach(function(item) {
-            if ( groupSum.hasOwnProperty(item.location[group]) ) {
-                groupSum[item.location[group]] = groupSum[item.location[group]] + item.signature_count
-            } else {
-                groupSum[item.location[group]] = item.signature_count
-            }
-        });
+            var groupSum = {};
+            constituencySignatureCount.forEach(function(item) {
+                if ( groupSum.hasOwnProperty(item.location[group]) ) {
+                    groupSum[item.location[group]] = groupSum[item.location[group]] + item.signature_count
+                } else {
+                    groupSum[item.location[group]] = item.signature_count
+                }
+            });
 
-        var groupSignatureCount = []
-        Object.keys(groupSum).forEach(function(item) {
-            groupSignatureCount.push({name:item, count: groupSum[item]})
-        })
-        const maxCount = Math.max.apply(Math, groupSignatureCount.map((item) => item.count))
+            var groupSignatureCount = []
+            Object.keys(groupSum).forEach(function(item) {
+                groupSignatureCount.push({name:item, count: groupSum[item]})
+            })
+            const maxCount = Math.max.apply(Math, groupSignatureCount.map((item) => item.count))
 
-        this.setState({ maxCount: maxCount, groupSignatureCount: groupSignatureCount })
+            this.setState({ maxCount: maxCount, groupSignatureCount: groupSignatureCount })
+        }
 
     }
 
@@ -90,43 +92,45 @@ class SignatureData extends React.Component {
     render() {
 
         if ( this.state.maxCount > 0 ) {
-            const updatedGroupSignatureCount = this.state.groupSignatureCount.map((item) => {
+            this.state.groupSignatureCount.map((item) => {
                 item.color = this.perc2color(item.count)
                 return item
             })
         }
 
-        return (
-            <div style={{width:'100%'}}>
-                <form style={{paddingBottom:'1em'}}>
-                    <label>
-                        <input
-                            type='radio'
-                            className='Radio-map-plot'
-                            name='mode'
-                            checked={this.state.mode === 'plot'}
-                            value='plot'
-                            onChange={this.handleRadioClick}
-                        /> Plot
-                    </label>
-                    <label style={{right:10}}>
-                        <input
-                            type='radio'
-                            className='Radio-map-plot'
-                            name='mode'
-                            checked={this.state.mode === 'map'}
-                            value='map'
-                            onChange={this.handleRadioClick}
-                        />Map
-                    </label>
-                </form>
-                {
-                    this.state.mode === 'plot' ?
-                    <PetitionPlot signatureCount={this.state.groupSignatureCount} /> :
-                    <Map signatureCount={this.state.groupSignatureCount}/>
-                }
-            </div>
-        )
+        if ( this.state.groupSignatureCount.length > 0) {
+            return (
+                <div style={{width:'100%'}}>
+                    <form style={{paddingBottom:'1em'}}>
+                        <label style={{marginRight:'1em'}}>
+                            <input
+                                type='radio'
+                                className='Radio-map-plot'
+                                name='mode'
+                                checked={this.state.mode === 'plot'}
+                                value='plot'
+                                onChange={this.handleRadioClick}
+                            /> Plot
+                        </label>
+                        <label>
+                            <input
+                                type='radio'
+                                className='Radio-map-plot'
+                                name='mode'
+                                checked={this.state.mode === 'map'}
+                                value='map'
+                                onChange={this.handleRadioClick}
+                            /> Map
+                        </label>
+                    </form>
+                    { this.state.mode === 'plot' ?
+                        <PetitionPlot signatureCount={this.state.groupSignatureCount} /> :
+                        <Map signatureCount={this.state.groupSignatureCount}/> }
+                </div>
+            )
+        } else {
+            return ('No data available')
+        }
     }
 }
 

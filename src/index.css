@@ -58,13 +58,3 @@ body {
 input::-ms-clear {
   display: none;
 }
-
-.developed-by {
-    bottom: 0;
-    position: fixed;
-    top: 0;
-    background-color: white;
-    height: 2.5em;
-    border-radius: 8;
-    text-align: center;
-}

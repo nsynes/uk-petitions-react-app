@@ -1,15 +1,15 @@
-.NotFound {
+.notfound {
   width: 100%;
   text-align: center;
   margin-top: 60px;
 }
 
-.NotFound-title {
+.notfound-title {
   font-weight: 400;
   color: #9cb3c9;
 }
 
-.NotFound-link {
+.notfound-link {
   display: inline-block;
   margin-top: 40px;
   color: #fff;
@@ -20,6 +20,6 @@
   transition: border .2s;
 }
 
-.NotFound-link:hover {
+.notfound-link:hover {
   border: 1px solid #fff;
 }

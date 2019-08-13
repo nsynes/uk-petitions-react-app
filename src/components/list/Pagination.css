@@ -1,9 +1,9 @@
-.Pagination {
+.pagination {
   margin: 1em auto;
   text-align: center;
 }
 
-.Pagination-button {
+.pagination-button {
   text-align: center;
   border: 1px solid #999999;
   border-radius: 16px;
@@ -17,20 +17,20 @@
   font-size: 20px;
 }
 
-.Pagination-button:hover {
+.pagination-button:hover {
   border-color: #0000cd;
 }
 
-.Pagination-button:focus {
+.pagination-button:focus {
   outline: none;
 }
 
-.Pagination-button:disabled {
+.pagination-button:disabled {
   background-color: #f1f1f1;
   border-color: #999999;
   cursor: not-allowed;
 }
 
-.Pagination-info {
+.pagination-info {
   font-size: 12px;
 }

@@ -30,7 +30,6 @@ class List extends React.Component {
         fetch(API_URL_search + '?page=' + page)// + '&state=open') //open, closed, rejected, awaiting_response, with_response, awaiting_debate, debated, not_debated
             .then(handleResponse)
             .then((result) => {
-                console.log('Success', result);
 
                 var totalPages = parseInt(result.links.last.split('page=')[1], 10);
 

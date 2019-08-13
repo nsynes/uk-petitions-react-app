@@ -69,42 +69,40 @@ class Detail extends React.Component {
             return (
                 <div>
                     <div className="detail">
-                        <div className="detail-container" >
-                            <h1 className="detail-heading">
-                                <div className="detail-title">
-                                    {petition.data.attributes.action}
+                        <h1 className="detail-heading">
+                            <div className="detail-title">
+                                {petition.data.attributes.action}
+                            </div>
+                        </h1>
+                        <div className="detail-container">
+                            <div className='detail-container-left'>
+                                <div className="detail-item">
+                                    Petition state <span className="detail-value">{renderStatus(petition.data.attributes.state)}</span>
                                 </div>
-                            </h1>
-                            <div style={{display:'flex'}}>
-                                <div className='detail-container-left'>
-                                    <div className="detail-item">
-                                        Petition state <span className="detail-value">{renderStatus(petition.data.attributes.state)}</span>
-                                    </div>
-                                    <div className="detail-item">
-                                        <a href={`https://petition.parliament.uk/petitions/${petition.data.id}/signatures/new`} target='_blank'>See petition</a>
-                                    </div>
-                                    <div className="detail-item">
-                                        Background<br /><span className="detail-para">{petition.data.attributes.background}</span>
-                                    </div>
-                                    <div className="detail-item">
-                                        Additional details<br /><span className="detail-para">{petition.data.attributes.additional_details ? petition.data.attributes.additional_details : 'None'}</span>
-                                    </div>
-                                    <div className="detail-item">
-                                        Signature count <span className="detail-value">{petition.data.attributes.signature_count.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}</span>
-                                    </div>
-                                    <div className="detail-item">
-                                        Date created <span className="detail-value">{petition.data.attributes.created_at.split("T")[0]}</span>
-                                    </div>
-                                    <div className="detail-item">
-                                        Petition created by <span className="detail-value">{petition.data.attributes.creator_name}</span>
-                                    </div>
+                                <div className="detail-item">
+                                    <a href={`https://petition.parliament.uk/petitions/${petition.data.id}/signatures/new`} target='_blank'>See petition</a>
                                 </div>
-                                <div className='detail-container-right' align='center'>
-                                    <div className="detail-item">
-                                        Signature count by region
-                                    </div>
-                                    <SignatureData constituencySignatureCount={petition.data.attributes.signatures_by_constituency} />
+                                <div className="detail-item">
+                                    Background<br /><span className="detail-para">{petition.data.attributes.background}</span>
                                 </div>
+                                <div className="detail-item">
+                                    Additional details<br /><span className="detail-para">{petition.data.attributes.additional_details ? petition.data.attributes.additional_details : 'None'}</span>
+                                </div>
+                                <div className="detail-item">
+                                    Signature count <span className="detail-value">{petition.data.attributes.signature_count.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}</span>
+                                </div>
+                                <div className="detail-item">
+                                    Date created <span className="detail-value">{petition.data.attributes.created_at.split("T")[0]}</span>
+                                </div>
+                                <div className="detail-item">
+                                    Petition created by <span className="detail-value">{petition.data.attributes.creator_name ? petition.data.attributes.creator_name : 'Unknown'}</span>
+                                </div>
+                            </div>
+                            <div className='detail-container-right' align='center'>
+                                <div className="detail-item">
+                                    Signature count by region
+                                </div>
+                                <SignatureData constituencySignatureCount={petition.data.attributes.signatures_by_constituency} />
                             </div>
                         </div>
                     </div>
